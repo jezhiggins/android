@@ -11,7 +11,7 @@ import net.cyclestreets.util.Screen;
 import net.cyclestreets.view.R;
 import net.cyclestreets.views.CycleMapView;
 
-import org.mapsforge.android.maps.MapsforgeOSMTileSource;
+import org.mapsforge.map.android.MapsforgeOSMTileSource;
 import org.osmdroid.tileprovider.MapTileProviderBase;
 import org.osmdroid.tileprovider.tilesource.ITileSource;
 import org.osmdroid.tileprovider.tilesource.XYTileSource;
@@ -172,7 +172,8 @@ public class TileSource {
                                      "https://c.tile.cyclestreets.net/osopendata/");
 
     final MapsforgeOSMTileSource MAPSFORGE =
-            new MapsforgeOSMTileSource(CycleStreetsPreferences.MAPSTYLE_MAPSFORGE,
+            new MapsforgeOSMTileSource(context,
+                                       CycleStreetsPreferences.MAPSTYLE_MAPSFORGE,
                                        DEFAULT_ATTRIBUTION,
                                        Screen.isHighDensity(context));
 
