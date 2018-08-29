@@ -4,6 +4,7 @@ import net.cyclestreets.TestUtils;
 
 import org.json.JSONException;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -30,7 +31,6 @@ public class JourneyStringTransformerTest {
     public void fromV1ApiXmlTest() throws IOException, JSONException {
         String inputXml = TestUtils.fromResourceFile("__files/journey-v1api.xml");
         String outputJson = JourneyStringTransformerKt.fromV1ApiXml(inputXml);
-        System.out.println(outputJson);
         JSONAssert.assertEquals(expectedJson, outputJson, JSONCompareMode.STRICT);
     }
 
@@ -38,7 +38,21 @@ public class JourneyStringTransformerTest {
     public void fromV1ApiJsonTest() throws IOException, JSONException {
         String inputJson = TestUtils.fromResourceFile("__files/journey-v1api.json");
         String outputJson = JourneyStringTransformerKt.fromV1ApiJson(inputJson);
-        System.out.println(outputJson);
         JSONAssert.assertEquals(expectedJson, outputJson, JSONCompareMode.STRICT);
+    }
+
+    /**
+     * To get the domain JSON for a particular journey:
+     *
+     * 1.  Hit https://www.cyclestreets.net/api/journey.json?plan=balanced&itinerary=itineraryId&key=redacted
+     * 2.  Copy and paste the JSON output into the inputJson variable below
+     * 3.  Run the test, then copy the output into e.g. https://jsonformatter.org/json-pretty-print
+     */
+    @Ignore
+    @Test
+    public void getDomainJson() throws IOException, JSONException {
+        String inputJson = "";
+        String outputJson = JourneyStringTransformerKt.fromV1ApiJson(inputJson);
+        System.out.println(outputJson);
     }
 }
